@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room Natalizia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #6c63ff, #ff6f61);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1, h2, p {
+            margin: 20px;
+            word-wrap: break-word;
+        }
+
+        h1 {
+            width: 100%;
+            display: inline-block;
+            white-space: normal;
+        }
+
+        .typewriter {
+            font-family: monospace;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #4c45cc;
+            transform: scale(1.1);
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            border: 2px solid #6c63ff;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #ff6f61;
+            outline: none;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        .section {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .section.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h2>Scopri il tuo regalo natalizio risolvendo questi enigmi!</h2>
+
+    <div class="section active" id="section1">
+        <h3>Enigma 1:</h3>
+        <p>Un teatro ha 12 file con 15 posti ciascuna. Ogni fila è occupata al 70%. Quanti spettatori ci sono in totale?</p>
+        <input type="text" id="answer1" placeholder="Risposta...">
+        <button class="button" onclick="checkAnswer1()">Invia Risposta</button>
+        <p id="error1" class="error" style="display:none;">Risposta errata, riprova!</p>
+    </div>
+
+    <div class="section" id="section2">
+        <h3>Enigma 2:</h3>
+        <p>Nel teatro greco, qual era il nome della piattaforma sopraelevata usata per mostrare gli dei o i personaggi divini?</p>
+        <input type="text" id="answer2" placeholder="Risposta...">
+        <button class="button" onclick="checkAnswer2()">Invia Risposta</button>
+        <p id="error2" class="error" style="display:none;">Risposta errata, riprova!</p>
+    </div>
+
+    <div class="section" id="section3">
+        <h3>Enigma 3:</h3>
+        <p>Se una scena dura 20 minuti e ci sono 3 scene per ogni atto, quanto dura uno spettacolo di 4 atti in ore?</p>
+        <input type="text" id="answer3" placeholder="Risposta...">
+        <button class="button" onclick="checkAnswer3()">Invia Risposta</button>
+        <p id="error3" class="error" style="display:none;">Risposta errata, riprova!</p>
+    </div>
+
+    <div class="section" id="section4">
+        <h3>Enigma 4:</h3>
+        <p>Un regista ha a disposizione 6 attori. Ognuno deve memorizzare 8 battute per 5 scene. Quante battute in totale devono imparare tutti gli attori?</p>
+        <input type="text" id="answer4" placeholder="Risposta...">
+        <button class="button" onclick="checkAnswer4()">Invia Risposta</button>
+        <p id="error4" class="error" style="display:none;">Risposta errata, riprova!</p>
+    </div>
+
+    <div class="section" id="section5">
+        <h3>Enigma 5:</h3>
+        <p>Qual è il termine teatrale per descrivere il "copione" utilizzato dai registi e attori?</p>
+        <input type="text" id="answer5" placeholder="Risposta...">
+        <button class="button" onclick="checkAnswer5()">Invia Risposta</button>
+        <p id="error5" class="error" style="display:none;">Risposta errata, riprova!</p>
+    </div>
+
+    <div class="section" id="finalSection">
+        <h3>Complimenti, hai risolto tutti gli enigmi!</h3>
+        <p>Per farti sapere che anche io credo in te ancor prima che lo faccia tu. Avrai la possibilità di andare a fare un workshop di 5 giorni dal 10 al 15 marzo al Teatro Fisico di Torino.<br>Ti amo.</p>
+    </div>
+
+    <script>
+        function checkAnswer1() {
+            const answer = document.getElementById('answer1').value.trim();
+            if (answer === "126") {
+                document.getElementById('section1').classList.remove('active');
+                document.getElementById('section2').classList.add('active');
+            } else {
+                document.getElementById('error1').style.display = 'block';
+            }
+        }
+
+        function checkAnswer2() {
+            const answer = document.getElementById('answer2').value.trim().toLowerCase();
+            if (answer === "ekkiklema") {
+                document.getElementById('section2').classList.remove('active');
+                document.getElementById('section3').classList.add('active');
+            } else {
+                document.getElementById('error2').style.display = 'block';
+            }
+        }
+
+        function checkAnswer3() {
+            const answer = document.getElementById('answer3').value.trim();
+            if (answer === "4") {
+                document.getElementById('section3').classList.remove('active');
+                document.getElementById('section4').classList.add('active');
+            } else {
+                document.getElementById('error3').style.display = 'block';
+            }
+        }
+
+        function checkAnswer4() {
+            const answer = document.getElementById('answer4').value.trim();
+            if (answer === "240") {
+                document.getElementById('section4').classList.remove('active');
+                document.getElementById('section5').classList.add('active');
+            } else {
+                document.getElementById('error4').style.display = 'block';
+            }
+        }
+
+        function checkAnswer5() {
+            const answer = document.getElementById('answer5').value.trim().toLowerCase();
+            if (answer === "libretto") {
+                document.getElementById('section5').classList.remove('active');
+                document.getElementById('finalSection').classList.add('active');
+            } else {
+                document.getElementById('error5').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
